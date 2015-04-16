@@ -15,7 +15,7 @@
 
 # Lokale setzen
 export LANG=de_DE.UTF-8
-PATH=$PATH:/home/emu/Software/AndroidSDK/sdk/platform-tools
+PATH=$PATH:/home/emu/Software/AndroidSDK/sdk/platform-tools:/home/emu/Software/MPLabX/xc/v1.34/bin
 export PATH
 
 # Falls keine interaktive Shell(zb Script), dann .bashrc beenden
@@ -97,9 +97,6 @@ if $isBash; then
 
 	# Bash sudo completion
 	complete -cf sudo
-else
-	setopt HIST_IGNORE_DUPS
-	setopt autocd			# auto cd to dir
 fi
 
 
@@ -356,7 +353,7 @@ function custom_prompt_command()
   #${TITLEBAR}\n
   PS1="$TITLEBAR
 ${cline}┌──╸${ctime}${TIME_SYMBOL}${cline}╺──◆──┤ ${cwdir}${wdir} ${cline}├─■
-${cline}└─┤${cuser}${USER_SYMBOL}${HOST_INFO}${cuser}${UMARK} ${white}"
+${cline}└─┤${cuser}${USER_SYMBOL}${HOST_INFO}${UMARK} ${white}"
 
   #Test
   # git befehl verursacht definitiv sprünge vom cursor
