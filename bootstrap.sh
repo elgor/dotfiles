@@ -1,25 +1,18 @@
 #!/usr/bin/env bash
 
+# determine full path of user's home directory
 HOME_DIR=$(cd && pwd)
-PWD=$(pwd)
 
-ln -s $PWD/.bashrc $HOME_DIR/.bashrc
-
+# get newest version
 git pull origin master;
 
-function doIt() {
-	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
-		--exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
-	source ~/.bash_profile;
-}
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-	doIt;
-else
-	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-	echo "";
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		doIt;
-	fi;
-fi;
-unset doIt;
+cd links
+
+# create missing dirs
+find . -type d -exec mkdir --parent $HOME_DIR/{} \;
+
+# create links
+find . -type f -exec ln -f -s $(pwd)/{} $HOME_DIR/{} \;
+
+exit 0

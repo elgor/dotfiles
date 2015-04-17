@@ -15,7 +15,8 @@
 
 # Lokale setzen
 export LANG=de_DE.UTF-8
-PATH=$PATH:/home/emu/Software/AndroidSDK/sdk/platform-tools:/home/emu/Software/MPLabX/xc/v1.34/bin
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+PATH=$PATH:/home/emu/Software/avrada/bin:/home/emu/Software/gnat-470/bin
 export PATH
 
 # Falls keine interaktive Shell(zb Script), dann .bashrc beenden
@@ -41,7 +42,7 @@ if test -n "$BASH_VERSION"; then
   TIME_SYMBOL="\t"
   UMARK="\\\$"
 elif test -n "$ZSH_VERSION"; then
-	isBash=false
+  isBash=false
   USER_SYMBOL="%n"
   HOST_SYMBOL="%m"
   TIME_SYMBOL="%*"
@@ -68,10 +69,10 @@ fi
 
 
 if [ -x "$(which svn)" ]; then
-	export SVN_INFO="svn_branch"
-	SVN_BRANCH_SYMBOL='⚡'
+  export SVN_INFO="svn_branch"
+  SVN_BRANCH_SYMBOL='⚡'
 else
-	export SVN_INFO=''
+  export SVN_INFO=''
 fi
 
 
@@ -79,24 +80,27 @@ fi
 # -------------------------------------------------------------------
 # (Bash) Shell options
 if $isBash; then
-	# Die History-Einstellungen verbessern
-	HISTCONTROL=ignoredups:ignorespace
-	HISTSIZE=1000
-	HISTIGNORE="[   ]*:&:bg:fg:ls:exit:ls *:find .:history"
-	export HISTSIZE HISTIGNORE HISTCONTROL
+  # Die History-Einstellungen verbessern
+  HISTCONTROL=ignoredups:ignorespace
+  HISTSIZE=1000
+  HISTIGNORE="[   ]*:&:bg:fg:ls:exit:ls *:find .:history"
+  export HISTSIZE HISTIGNORE HISTCONTROL
 
-	shopt -s histappend
-	shopt -s no_empty_cmd_completion 
-	shopt -s cdspell        # fix dir-name typos in cd
-	shopt -s checkwinsize   # handle xterm resizing
-	shopt -s cmdhist        # save multi-line commands as one line
-	shopt -s dotglob        # allow tab-completion of '.' filenames
-	shopt -s hostcomplete   # tab-complete words containing @ as hostnames
-	shopt -s execfail # failed execs don't exit shell
-	set -o notify           # show status of terminated programs immediately
+  shopt -s histappend
+  shopt -s no_empty_cmd_completion 
+  shopt -s cdspell        # fix dir-name typos in cd
+  shopt -s checkwinsize   # handle xterm resizing
+  shopt -s cmdhist        # save multi-line commands as one line
+  shopt -s dotglob        # allow tab-completion of '.' filenames
+  shopt -s hostcomplete   # tab-complete words containing @ as hostnames
+  shopt -s execfail # failed execs don't exit shell
+  set -o notify           # show status of terminated programs immediately
 
-	# Bash sudo completion
-	complete -cf sudo
+  # Bash sudo completion
+  complete -cf sudo
+else
+  setopt HIST_IGNORE_DUPS
+  setopt autocd     # auto cd to dir
 fi
 
 
@@ -147,23 +151,23 @@ alias x='extract'       # x=eXtract <Datei>
 # Farben definieren
 # --------------------------------->
 if $isBash; then
-	white="\[\033[0;37m\]"; WHITE="\[\033[1;37m\]"
-	blue="\[\033[0;34m\]"; BLUE="\[\033[1;34m\]"
-	green="\[\033[0;32m\]"; GREEN="\[\033[1;32m\]"
-	cyan="\[\033[0;36m\]"; CYAN="\[\033[1;36m\]"
-	red="\[\033[0;31m\]"; RED="\[\033[1;31m\]"
-	purple="\[\033[0;35m\]"; PURPLE="\[\033[1;35m\]"
-	yellow="\[\033[0;33m\]"; YELLOW="\[\033[1;33m\]"
-	GRAY="\[\033[1;30m\]"
+  white="\[\033[0;37m\]"; WHITE="\[\033[1;37m\]"
+  blue="\[\033[0;34m\]"; BLUE="\[\033[1;34m\]"
+  green="\[\033[0;32m\]"; GREEN="\[\033[1;32m\]"
+  cyan="\[\033[0;36m\]"; CYAN="\[\033[1;36m\]"
+  red="\[\033[0;31m\]"; RED="\[\033[1;31m\]"
+  purple="\[\033[0;35m\]"; PURPLE="\[\033[1;35m\]"
+  yellow="\[\033[0;33m\]"; YELLOW="\[\033[1;33m\]"
+  GRAY="\[\033[1;30m\]"
 else
-	white="%{$fg_no_bold[white]%}"; WHITE="%{$fg_bold[white]%}"
-	blue="%{$fg_no_bold[blue]%}"; BLUE="%{$fg_bold[blue]%}"
-	green="%{$fg_no_bold[green]%}"; GREEN="%{$fg_bold[green]%}"
-	cyan="%{$fg_no_bold[cyan]%}"; CYAN="%{$fg_bold[cyan]%}"
-	red="%{$fg_no_bold[red]%}"; RED="%{$fg_bold[red]%}"
-	purple="%{$fg_no_bold[magenta]%}"; PURPLE="%{$fg_bold[magenta]%}"
-	yellow="%{$fg_no_bold[yellow]%}"; YELLOW="%{$fg_bold[yellow]%}"
-	GRAY="%{$fg_bold[black]%}"
+  white="%{$fg_no_bold[white]%}"; WHITE="%{$fg_bold[white]%}"
+  blue="%{$fg_no_bold[blue]%}"; BLUE="%{$fg_bold[blue]%}"
+  green="%{$fg_no_bold[green]%}"; GREEN="%{$fg_bold[green]%}"
+  cyan="%{$fg_no_bold[cyan]%}"; CYAN="%{$fg_bold[cyan]%}"
+  red="%{$fg_no_bold[red]%}"; RED="%{$fg_bold[red]%}"
+  purple="%{$fg_no_bold[magenta]%}"; PURPLE="%{$fg_bold[magenta]%}"
+  yellow="%{$fg_no_bold[yellow]%}"; YELLOW="%{$fg_bold[yellow]%}"
+  GRAY="%{$fg_bold[black]%}"
 fi
 
 
@@ -198,9 +202,9 @@ _lp_connection()
     if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]] ; then
         # If we are connected with a X11 support
         if [[ -n "$DISPLAY" ]] ; then
-        	echo "${GREEN}@${cnone}$(hostname)"
+          echo "${GREEN}@${cnone}$(hostname)"
         else
-        	echo "${cnone}@$(hostname)"
+          echo "${cnone}@$(hostname)"
         fi
     else
         local sess_parent="$(ps -o comm= -p $PPID 2> /dev/null)"
@@ -364,7 +368,7 @@ ${cline}└─┤${cuser}${USER_SYMBOL}${HOST_INFO}${UMARK} ${white}"
 
 # Befehl ausführen
 if $isBash; then
-	PROMPT_COMMAND=custom_prompt_command
+  PROMPT_COMMAND=custom_prompt_command
 else
   function precmd { 
     print -Pn "\e]0;%n@%m\a"
@@ -396,8 +400,8 @@ git_branch() {
     # try to get current branch or or SHA1 hash for detached head
     local branch="$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)"
     if [ -z "$branch" ]; then 
-    	echo -n ""
-    	return  # not a git branch
+      echo -n ""
+      return  # not a git branch
     fi
 
     local marks
