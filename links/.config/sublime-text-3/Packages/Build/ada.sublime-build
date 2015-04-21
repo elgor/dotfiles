@@ -2,6 +2,8 @@
 	"cmd": ["if test -f 'Makefile'; then make; else sleep 0.1; echo 'No Makefile'; fi"],
 	"file_regex": "(.*.ad[bs]):([0-9]+):([0-9]+).*$",
 	"selector": "source.ada",
-	"syntax":"Packages/Ada/Syntaxes/Ada.tmLanguage",
+	//"syntax":"Packages/Ada/Syntaxes/Ada.tmLanguage",
+	"syntax":"Packages/Makefile/Makefile.tmLanguage",
+	//"syntax":"Packages/ShellScript/Shell-Unix-Generic.tmLanguage",	
 	"shell": true,
 }
