@@ -6,4 +6,21 @@
 	"syntax":"Packages/Makefile/Makefile.tmLanguage",
 	//"syntax":"Packages/ShellScript/Shell-Unix-Generic.tmLanguage",	
 	"shell": true,
+
+    "variants": [
+
+        { "name": "Build",
+          "cmd": ["if test -f 'Makefile'; then make; else sleep 0.1; echo 'No Makefile'; fi"],
+          "shell": true
+        },
+
+        { "name": "Clean",
+          "cmd": ["if test -f 'Makefile'; then make clean; else sleep 0.1; echo 'No Makefile'; fi"],
+          "shell": true
+        },
+
+        { "name": "Run",
+          "cmd": ["if test -f 'Makefile'; then make program; else sleep 0.1; echo 'No Makefile'; fi"]
+        }
+    ]	
 }
