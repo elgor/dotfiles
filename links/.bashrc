@@ -17,6 +17,8 @@
 export LANG=de_DE.UTF-8
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 PATH=$PATH:/home/emu/Software/avrada/bin:/home/emu/Software/gnat-470/bin
+PATH=$PATH:/home/emu/.local/bin
+PATH=/opt/spark2014/bin:$PATH
 export PATH
 
 # Falls keine interaktive Shell(zb Script), dann .bashrc beenden
@@ -36,20 +38,40 @@ TTY_PATH=${TTY_PATH:5}
 if test -n "$BASH_VERSION"; then
   echo $BASH_VERSION
   export SHELL=$(which bash)
+  # set VI key bindings
+  set -o vi
   isBash=true
   USER_SYMBOL="\u"
   HOST_SYMBOL="\h"
   TIME_SYMBOL="\t"
   UMARK="\\\$"
 elif test -n "$ZSH_VERSION"; then
+  # set VI key bindings
+  bindkey -v
+  export KEYTIMEOUT=2
+  zle -N zle-keymap-select
+  zle -N zle-line-init
   isBash=false
   USER_SYMBOL="%n"
   HOST_SYMBOL="%m"
   TIME_SYMBOL="%*"
   UMARK="%(!.#.%%)" 
-
   TITLEBAR=""
+
+zle-keymap-select() {
+  RPROMPT=""
+  [[ $KEYMAP = vicmd ]] && RPROMPT="(CMD)"
+  # () { return $__prompt_status }
+  zle reset-prompt
+}
+zle-line-init() {
+  typeset -g __prompt_status="$?"
+}
+
+
 fi
+
+
 
 
 
@@ -371,6 +393,7 @@ if $isBash; then
   PROMPT_COMMAND=custom_prompt_command
 else
   function precmd { 
+  	RPROMPT=""
     print -Pn "\e]0;%n@%m\a"
     custom_prompt_command 
   }

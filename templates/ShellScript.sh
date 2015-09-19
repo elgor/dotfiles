@@ -1,4 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# ------------------------------------------------------------------------------
+# Company: Open-Source
+# Project: New Project
+# Module:  myscript
+# Author:  Emanuel Regnath (emanuel.regnath@tum.de)
+# 
+# Description: Represents the myscript.
+# It is a driver/manager/handler/database for XXXX
+# and is used by XXXX to XXXX
+# 
+# ToDo:
+# [ ] Refactor
+# [ ] Fix Bug:
+# ------------------------------------------------------------------------------
 
 # variables, calculations, and arrays (no spaces around =)
 X=3
@@ -45,5 +59,5 @@ done < $path
 		echo "Hello World"
 	fi	
 
-# finish with "exit <number>"
+# exit with error code
 exit 0

@@ -9,8 +9,8 @@
 
     "variants": [
 
-        { "name": "Build",
-          "cmd": ["if test -f 'Makefile'; then make; else sleep 0.1; echo 'No Makefile'; fi"],
+        { "name": "Check Syntax",
+          "cmd": ["gcc -c -gnat2012 -gnats $file"],
           "shell": true
         },
 

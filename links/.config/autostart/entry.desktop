@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Set Keymap
+Comment=This is a describing comment
+Exec=bash -e "/home/emu/.config/autostart/start-up.sh"
+Icon=launcher
+Terminal=false
+Categories=Education;Languages;Java;

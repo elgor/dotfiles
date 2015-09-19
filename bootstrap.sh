@@ -13,6 +13,12 @@ find . -type d -exec mkdir --parent $HOME_DIR/{} \;			# create missing dirs
 find . -type f -exec ln -fsv $(pwd)/{} $HOME_DIR/{} \;		# create links
 cd ..
 
+cd hardlinks
+find . -type d -exec mkdir --parent $HOME_DIR/{} \;			# create missing dirs
+find . -type f -exec ln -fv $(pwd)/{} $HOME_DIR/{} \;		# create links
+cd ..
+
+
 
 cd templates
 find . -type d -exec mkdir --parent $TEMPLATES_DIR/{} \;

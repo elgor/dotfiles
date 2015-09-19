@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+# Ask something
+echo "Enter something:"
+read -e SOMETHING  
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ask</tabTrigger>
+</snippet>

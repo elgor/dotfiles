@@ -1,0 +1,6 @@
+{
+	"name"		: "Syntax Check",
+    "cmd"       : ["gcc -f-syntax-only $file"],
+    "selector"  : "source.c++",
+    "shell" : true
+}

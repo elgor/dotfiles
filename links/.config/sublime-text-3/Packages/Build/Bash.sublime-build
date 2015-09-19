@@ -1,0 +1,5 @@
+{
+    "cmd"       : ["x-terminal-emulator -e 'bash -c \"$file; echo press any key to close; read -n 1 -r\"'"],
+    "selector"  : "source.shell",
+    "shell" : true
+}

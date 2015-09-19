@@ -1,5 +1,5 @@
 {
-   "checksum": "5f7706c5ffd176d04445ec33a03ff0ab",
+   "checksum": "a071607c6d73e852bd61f4c06da68371",
    "roots": {
       "bookmark_bar": {
          "children": [ {
@@ -712,9 +712,27 @@
                   "name": "Intellectual Ammunition - C/C++ to Ada Help and Discussion",
                   "type": "url",
                   "url": "http://www.adahome.com/ammo/cpp2ada.html#1.1.1"
+               }, {
+                  "date_added": "13073767669000000",
+                  "id": "367",
+                  "name": "An efficient and deterministic multi-tasking run-time environment for Ada and the Ravenscar profile on the Atmel AVR® 32 UC3 microcontroller | Kristoffer Gregertsen - Academia.edu",
+                  "type": "url",
+                  "url": "https://www.academia.edu/1944156/An_efficient_and_deterministic_multi-tasking_run-time_environment_for_Ada_and_the_Ravenscar_profile_on_the_Atmel_AVR_32_UC3_microcontroller"
+               }, {
+                  "date_added": "13073769716000000",
+                  "id": "368",
+                  "name": "Integrating 8-bit AVR Micro-Controllers in Ada | Pablo Rego - Academia.edu",
+                  "type": "url",
+                  "url": "https://www.academia.edu/2490736/Integrating_8-bit_AVR_Micro-Controllers_in_Ada"
+               }, {
+                  "date_added": "13074289080000000",
+                  "id": "369",
+                  "name": "Programming AVR with ADA programming language [Mental Workbench]",
+                  "type": "url",
+                  "url": "http://wiki.kucia.net/doku.php?id=projects:avrada"
                } ],
                "date_added": "13073144367933133",
-               "date_modified": "13074007061294376",
+               "date_modified": "13074291763265472",
                "id": "118",
                "name": "FP",
                "type": "folder"
@@ -1443,7 +1461,7 @@
          "date_added": "13073135889878146",
          "date_modified": "13073577380183444",
          "id": "2",
-         "name": "Weitere Lesezeichen",
+         "name": "Andere Lesezeichen",
          "type": "folder"
       },
       "synced": {

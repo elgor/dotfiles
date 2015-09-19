@@ -16,3 +16,4 @@ colors
 
 source ~/.bashrc
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/oop-zsh/opp.zsh
