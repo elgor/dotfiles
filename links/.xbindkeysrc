@@ -1,0 +1,14 @@
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+	XF86AudioPlay
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
+	XF86AudioStop
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+	XF86AudioPrev
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+	XF86AudioNext
+"pactl set-sink-mute 1 toggle"
+	XF86AudioMute
+"pactl set-sink-volume 1 +5%"
+	XF86AudioRaiseVolume
+pactl set-sink-volume 1 -5%
+	XF86AudioLowerVolume

@@ -16,16 +16,84 @@
 
 
 { "keys": ["ctrl+r"], "command": "show_panel", "args": {"panel": "replace", "reverse": false} },
-{ "keys": ["ctrl+d"], "command": "duplicate_line" },
-{ "keys": ["ctrl+g"], "command": "find_under_expand" },
+{ "keys": ["ctrl+l"], "command": "duplicate_line" },
+// { "keys": ["ctrl+<"], "command": "duplicate_line" },
+// { "keys": ["ctrl+g"], "command": "find_under_expand", "args": {"extend": false}},
+
+{ "keys": ["ctrl+shift+<"], "command": "indent" },
+{ "keys": ["ctrl+<"], "command": "unindent" },
 
 { "keys": ["ctrl+h"], "command": "join_lines" },
-{ "keys": ["ctrl+k"], "command": "swap_line_up" },
 { "keys": ["ctrl+j"], "command": "swap_line_down" },
+{ "keys": ["ctrl+k"], "command": "swap_line_up" },
 { "keys": ["ctrl+shift+k"], "command": "scroll_lines", "args": {"amount": 4.0 } },
 { "keys": ["ctrl+shift+j"], "command": "scroll_lines", "args": {"amount": -4.0 } },
 
 
+
+
+
+
+// Alt Key
+// ==========================================================================================================
+
+// Movement
+{ "keys": ["alt+h"], "command": "move", "args": {"by": "characters", "forward": false} },
+{ "keys": ["alt+l"], "command": "move", "args": {"by": "characters", "forward": true} },
+{ "keys": ["alt+k"], "command": "move", "args": {"by": "lines", "forward": false} },
+{ "keys": ["alt+j"], "command": "move", "args": {"by": "lines", "forward": true} },
+
+{ "keys": ["alt+q"], "command": "move", "args": {"by": "words", "forward": false} },
+{ "keys": ["alt+b"], "command": "move", "args": {"by": "words", "forward": false} },
+{ "keys": ["alt+w"], "command": "move", "args": {"by": "words", "forward": true} },
+{ "keys": ["alt+e"], "command": "move", "args": {"by": "word_ends", "forward": true} },
+
+
+{ "keys": ["alt+i"], "command": "move", "args": {"by": "words", "forward": false} },
+{ "keys": ["alt+a"], "command": "move", "args": {"by": "word_ends", "forward": true} },
+{ "keys": ["alt+shift+i"], "command": "move_to", "args": {"to": "bol", "extend": false} },
+{ "keys": ["alt+shift+a"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+
+
+//  Selection
+{ "keys": ["alt+shift+h"], "command": "move", "args": {"by": "characters", "forward": false, "extend": true} },
+{ "keys": ["alt+shift+l"], "command": "move", "args": {"by": "characters", "forward": true, "extend": true} },
+{ "keys": ["alt+shift+k"], "command": "move", "args": {"by": "lines", "forward": false, "extend": true} },
+{ "keys": ["alt+shift+j"], "command": "move", "args": {"by": "lines", "forward": true, "extend": true} },
+
+
+{ "keys": ["alt+shift+q"], "command": "move", "args": {"by": "words", "forward": false, "extend": true} },
+{ "keys": ["alt+shift+w"], "command": "move", "args": {"by": "words", "forward": true, "extend": true} },
+{ "keys": ["alt+shift+e"], "command": "move", "args": {"by": "word_ends", "forward": true, "extend": true} },
+
+{ "keys": ["alt+v", "alt+b"], "command": "expand_selection", "args": {"to": "brackets"} },
+{ "keys": ["alt+v", "alt+w"], "command": "expand_selection", "args": {"to": "word"} },
+{ "keys": ["alt+v", "alt+l"], "command": "expand_selection", "args": {"to": "line"} },
+
+
+// Insert
+{ "keys": ["alt+o"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line.sublime-macro"} },
+{ "keys": ["alt+shift+o"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line Before.sublime-macro"} },
+
+
+// Search
+{ "keys": ["alt+n"], "command": "find_under" },
+{ "keys": ["alt+shift+n"], "command": "find_under_prev" },
+
+// Others
+
+{ "keys": ["alt+u"], "command": "left_delete" },
+{ "keys": ["alt+d", "alt+d"], "command": "expand_selection", "args": {"to": "line"} },
+
+
+
+
+
+
+
+
+// Vintage Mode Commands
+// =========================================================================================
 
 { "keys": ["j", "j"], "command": "run_macro_file", 
     "args": {"file": "Packages/User/Macro/really_exit_insert_mode.sublime-macro"},
@@ -35,8 +103,6 @@
         { "key": "setting.is_widget", "operand": false }
     ]
 },
-
-// Vintage Mode Commands
 
 
 { "keys": ["H"], "command": "set_motion", "args": {

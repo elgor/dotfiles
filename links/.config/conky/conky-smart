@@ -1,0 +1,89 @@
+#
+# CPU 6% 47°
+# WiFi 56%↓  |   HSDPA: 123,3Mb↓ 
+# Bat 63% 1:30h  | Pwr: 12W
+# RAM 52%
+
+# Position --------------------------
+alignment top_right
+gap_x 100
+gap_y 80
+minimum_size 300 600
+
+# Window ----------------------------
+own_window yes
+own_window_type normal
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+#own_window_class Conky
+own_window_transparent yes
+
+
+# View -----------------------------
+update_interval 3.0
+double_buffer yes	# verhindert flackern
+no_buffers yes
+background yes
+
+
+# Font -----------------------------
+use_xft yes
+xftalpha 0
+text_buffer_size 2048
+xftfont AvenirNextLTPro:size=11
+#override_utf8_locale yes
+uppercase no
+
+# Borders ---------------------------
+draw_borders no
+draw_outline no
+default_outline_color white
+draw_shades no
+default_shade_color white
+
+
+# colors ---------------------------
+default_color white
+color1 D01010
+color2 30A020
+
+
+# graphs ---------------------------
+draw_graph_borders yes
+show_graph_scale yes
+show_graph_range no
+
+# misc -----------------------------
+if_up_strictness address
+cpu_avg_samples 3
+net_avg_samples 3
+pad_percents 2
+short_units yes
+
+#Neutra Text Light Alt
+#AvenirNextLTPro-UltLtCn
+
+# Output
+# ==============================================================================
+TEXT
+#${alignc 35}
+${font AvenirNextLTPro-UltLtCn:weight=Light:size=60}${time %H:%M}
+${goto 170}${voffset -117}${font AvenirNextLTPro-UltLtCn:weight=Lightt:size=22}${color1}${time %A}${color} ${execpi 1000 /home/emu/.config/conky/conky-weather.sh now}
+${goto 170}${voffset 5}${time %Y-%m-%d}
+${font}${color1}Today: ${color}${execpi 1000 /home/emu/.config/conky/conky-weather.sh today}
+${color1}Tomorrow: ${color}${execpi 1000 /home/emu/.config/conky/conky-weather.sh tomorrow}
+
+
+${goto 30}${color1}RAM:${color} $memperc%
+
+${goto 80}${color1}CPU:${color} $cpu%       
+
+${goto 120}${voffset -60}${if_up wlan0}${color1}WiFi:${color} ${wireless_link_qual_perc wlan0}% ${font FreeSans:size=11}${if_match ${downspeedf wlan0} >= 10.0}↓${else}${offset 9}${endif}${if_match ${downspeedf wlan0} >= 5.0}↑${endif}${font} ${execpi 9 ifconfig | sed -n '/wlan0/,$ s/.*RX bytes:[0-9]* (\([0-9.]*...\).*/\1/p'}${endif}
+
+
+${goto 120}${color1}Temp:${color} $acpitemp°C        
+
+${goto 180}${voffset -10}${color1}Bat:${color} ${battery_percent}%
+
+${voffset 100}
+${color1}ToDo:${color}
+${execpi 120 cat /home/emu/Software/todo/todo.txt}

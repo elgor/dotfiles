@@ -53,6 +53,40 @@ partial default alphanumeric_keys modifier_keys xkb_symbols "group2" {
     key.type[Group2] = "EIGHT_LEVEL_CTRL";
 
 
+
+    // Number row
+    // --------------------------------------------------------------
+    key <TLDE> {
+        symbols[Group2] = [ Home,             degree,                  U2103,                   zerosuperior,           zerosubscript,           zerosuperior,             U2103,                   NoSymbol                 ] };
+
+    key <AE01> {
+        symbols[Group2] = [ 1,                       exclam,                  doublelowquotemark,      singlelowquotemark,     onesubscript,            onesuperior,              notsign,                 U2032                 ] };
+    key <AE02> {
+        symbols[Group2] = [ 2,                       quotedbl,                leftdoublequotemark,     rightsinglequotemark,   twosubscript,            twosuperior,              onehalf,                 U2033                 ] };
+    key <AE03> {
+        symbols[Group2] = [ 3,                       apostrophe,              rightdoublequotemark,    leftsinglequotemark,    threesubscript,          threesuperior,            threequarters,           U2034                 ] };
+    key <AE04> {
+        symbols[Group2] = [ 4,                       End,                  EuroSign,                yen,                    U2084,                   U2074,                    onequarter,              NoSymbol                 ] };
+    key <AE05> {
+        symbols[Group2] = [ 5,                       percent,                 sterling,                RupeeSign,              U2085,                   U2075,                    NoSymbol,                U2030                  ] };
+    key <AE06> {
+        symbols[Group2] = [ 6,                       ampersand,               NoSymbol,                NoSymbol,               U2086,                   U2076,                    femalesymbol,            malesymbol               ] };
+
+    key <AE07> {
+        symbols[Group2] = [ 7,                       slash,                   braceleft,               U2045,                  U2087,                   U2077,                    U00F7,                   NoSymbol                 ] };
+    key <AE08> {
+        symbols[Group2] = [ 8,                       parenleft,               bracketleft,             U27E8,                  U2088,                   U2078,                    U230A,                   U2308                 ] };
+    key <AE09> {
+        symbols[Group2] = [ 9,                       parenright,              bracketright,            U27E9,                  U2089,                   U2079,                    U230B,                   U2309                 ] };
+    key <AE10> {
+        symbols[Group2] = [ 0,                       equal,                   braceright,              U2046,                  notequal,                approxeq,                 identical,               emptyset                 ] };
+
+    key <AE11> {
+        symbols[Group2] = [ ssharp,                  question,                backslash,               U1E9E,                  U207A,                   U207B,                    hyphen,                  NoSymbol                 ] };
+    key <AE12> {
+        symbols[Group2] = [ dead_acute,              dead_grave,              dead_macron,             dead_diaeresis,         dead_cedilla,            dead_abovering,          dead_dasia,               dead_belowdot            ] };
+
+
     // Tab as Multi_key (Compose)
     // --------------------------------------------------------------
     key  <TAB> {
