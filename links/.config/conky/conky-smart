@@ -29,8 +29,9 @@ background yes
 use_xft yes
 xftalpha 0
 text_buffer_size 2048
-xftfont AvenirNextLTPro:size=11
-#override_utf8_locale yes
+# xftfont AvenirNextLTPro:size=11
+xftfont Ubuntu:size=11
+override_utf8_locale yes
 uppercase no
 
 # Borders ---------------------------
@@ -83,6 +84,8 @@ ${goto 120}${voffset -60}${if_up wlan0}${color1}WiFi:${color} ${wireless_link_qu
 ${goto 120}${color1}Temp:${color} $acpitemp°C        
 
 ${goto 180}${voffset -10}${color1}Bat:${color} ${battery_percent}%
+
+${color1}DB:${color} ${execpi 1000 dropbox status | sed 's/Up to date/Ok/'}
 
 ${voffset 100}
 ${color1}ToDo:${color}

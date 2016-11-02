@@ -1,8 +1,20 @@
 {
+	"added_words":
+	[
+		"remanence",
+		"Unclonable",
+		"styrowing",
+		"quadcopter"
+	],
 	"color_scheme": "Packages/Color Scheme - Default/Dawn.tmTheme",
 	"dictionary": "Packages/Language - English/en_US.dic",
+	"dpi_scale": 1.2,
 	"font_face": "Source Code Pro",
-	"font_size": 10,
+	"font_options":
+	[
+		"gray_antialias"
+	],
+	"font_size": 11,
 	"ignored_packages":
 	[
 	]
