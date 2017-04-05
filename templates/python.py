@@ -75,6 +75,17 @@ else:
 for i in xrange(1, 10):
 	print i
 
+# String/List slicing
+#  +---+---+---+---+---+
+#  | H | e | l | p | A |
+#  +---+---+---+---+---+
+#  0   1   2   3   4   5
+# -5  -4  -3  -2  -1
+
+# a[start:end] # items start through end-1
+# a[start:]    # items start through the rest of the array
+# a[:end]      # items from the beginning through end-1
+# a[:]         # a copy of the whole array
 
 # Main Loop
 log.info("Entering Loop")

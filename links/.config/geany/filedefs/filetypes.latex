@@ -1,0 +1,4 @@
+[build-menu]
+FT_00_LB=LaTeX -> _DVI
+FT_00_CM=xelatex --file-line-error-style "%f"
+FT_00_WD=

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- title, description, favicon -->
+    <title>Emanuel Regnath</title>
+    <meta name="description" content="Kurzbeschreibung" />
+    <link rel="shortcut icon" href="./favicon.ico"/>	
+	
+
+	<!-- load style sheet -->
+	<link rel="stylesheet" type="text/css" href="layout.css"/>
+
+	<!-- syntax -->
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<!-- H T M L   B O D Y -->
+<!-- =========================================================================================== -->
+<body>
+		
+	<!-- Header: -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->  
+	<header>
+		<h1>My Website</h1>
+		
+	</header>
+
+	<!-- Navigation: -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <nav>
+    	Navigation
+    </nav>
+    
+    
+	<!-- Content: -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<main>
+		<h2>About 2</h2>
+		<h3>About 3</h3>
+		<p> This is my first website. Yehaaa! </p>		
+
+
+		<!-- Example Table -->
+		<table>
+			<tr><td> 1 </td><td> 2 </td></tr>
+			<tr><td> 3 </td><td> 4 </td></tr>	
+		</table>
+
+		<h3>Quote Test</h3>
+		<blockquote>This is a quote</blockquote>
+		<button>Click me</button>
+		
+
+		<pre><code>package body Bits is
+
+	function getByteArray(data : Integer_64) return Bytes_64 is
+		bytes : Bytes_64;
+		for bytes'Address use data'Address;
+	begin
+		return bytes;
+	end getByteArray;
+
+end Bits;</code></pre>
+
+	<aside>
+		Aside test
+	</aside>
+
+      <figure>
+        <img src="http://placekitten.com/420/420" alt="Image alt text">
+        <figcaption>Here is a caption for this image.</figcaption>
+      </figure>
+	</main>
+
+
+	<!-- Footer: -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <footer>
+    	By me.
+    </footer>
+
+</body>
+</html>

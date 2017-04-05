@@ -1,0 +1,26 @@
+{
+	"cmd": ["if test -f 'Makefile'; then make; else sleep 0.1; echo 'No Makefile'; fi"],
+	"file_regex": "(.*.ad[bs]):([0-9]+):([0-9]+).*$",
+	"selector": "source.ada",
+	//"syntax":"Packages/Ada/Syntaxes/Ada.tmLanguage",
+	"syntax":"Packages/Makefile/Makefile.tmLanguage",
+	//"syntax":"Packages/ShellScript/Shell-Unix-Generic.tmLanguage",	
+	"shell": true,
+
+    "variants": [
+
+        { "name": "Check Syntax",
+          "cmd": ["gcc -c -gnat2012 -gnats $file"],
+          "shell": true
+        },
+
+        { "name": "Clean",
+          "cmd": ["if test -f 'Makefile'; then make clean; else sleep 0.1; echo 'No Makefile'; fi"],
+          "shell": true
+        },
+
+        { "name": "Run",
+          "cmd": ["if test -f 'Makefile'; then make program; else sleep 0.1; echo 'No Makefile'; fi"]
+        }
+    ]	
+}

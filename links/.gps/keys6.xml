@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Keys>
+  <key action="goto declaration" >F12</key>
+  <key action="terminate all debuggers" >shift-control-T</key>
+  <key action="Global Search in context: File names" >control-p</key>
+</Keys>

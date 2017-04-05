@@ -28,6 +28,7 @@ autoload -U colors
 colors
 # End of lines added by compinstall
 
-source ~/.bashrc
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/oop-zsh/opp.zsh
+source ~/.promptheusrc
+
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
