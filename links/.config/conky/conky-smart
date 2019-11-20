@@ -66,16 +66,15 @@ short_units yes
 # Output
 # ==============================================================================
 TEXT
-#${alignc 35}
-${font AvenirNextLTPro-UltLtCn:weight=Light:size=80}${time %H:%M}
-${goto 240}${voffset -165}${font AvenirNextLTPro-UltLtCn:size=22}${color1}${time %A}${color} ${execpi 1000 /home/emu/.config/conky/conky-weather.sh now}
-${goto 240}${voffset 25}${time %Y-%m-%d}
-${font}${color1}Today: ${color}${execpi 1000 /home/emu/.config/conky/conky-weather.sh today}
-${color1}Tomorrow: ${color}${execpi 1000 /home/emu/.config/conky/conky-weather.sh tomorrow}
+${font AvenirNextLTPro-UltLtCn:weight=Light:size=80}${time %H:%M}${goto 300}${voffset -68}${font AvenirNextLTPro-UltLtCn:size=22}${color1}${time %A}${color} ${execpi 1000 ~/.config/conky/conky-weather.sh now}
+${goto 300}${voffset 30}${time %Y-%m-%d}
+${font}${color1}Today: ${color}${execpi 1000 ~/.config/conky/conky-weather.sh today}
+${color1}Tomorrow: ${color}${execpi 1000 ~/.config/conky/conky-weather.sh tomorrow}
 
-
+# Memory
+# ------
 # ${goto 30}${color1}RAM:${color} $memperc%
-${color1}MEM:${color} / ${fs_free /} /home ${fs_free /home} RAM ${memeasyfree}
+${color1}MEM:${color} / ${fs_free /}      /home ${fs_free /home}      ${color1}RAM:${color} ${memeasyfree}
 
 ${goto 80}${color1}CPU:${color} $cpu%   ${color1}Procs:${color} $running_processes/$processes 
 
@@ -84,14 +83,16 @@ ${goto 120}${voffset -60}${if_up wlan0}${color1}WiFi:${color} ${wireless_link_qu
 
 ${goto 120}${color1}Temp:${color} $acpitemp°C        
 
-${goto 180}${voffset -10}${color1}Bat:${color} ${execpi 20 cat /sys/class/power_supply/BAT?/capacity}% # ${battery_percent}%
+${goto 180}${voffset -10}${color1}Bat:${color} ${battery_percent}%
+#${execpi 20 cat /sys/class/power_supply/BAT?/capacity}% # 
 
 ${color1}DB:${color} ${execpi 1000 dropbox status | sed 's/Up to date/Ok/'}
 
 
 # ${color1}IP:${color}  ${execpi 100 hostname -I} : ${execpi 100 dig +short myip.opendns.com @resolver1.opendns.com}
+${font DejaVu Sans}
 TCP: ${tcp_portmon 1 32767 count}↓ ${tcp_portmon 32768 61000 count}↑
 
 ${voffset 100}
 ${color1}ToDo:${color}
-${execpi 120 cat /home/emu/Software/todo/todo.txt}
+${execpi 120 cat ~/nextCloud/todo.md}

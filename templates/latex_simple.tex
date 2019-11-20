@@ -1,20 +1,33 @@
 % document settings
 \documentclass[11pt,a4paper]{scrartcl}		% article
-\usepackage[utf8]{inputenc}					% input UTF-8
-\usepackage{geometry}						% for layout
-\usepackage[ngerman]{babel}					% use english or ngerman
-\usepackage{microtype}						% better font kerning
-\usepackage[hidelinks]{hyperref}			% use invisible clikable links
-
-% layout
-\geometry{hmargin=2.5cm, top=3cm, bottom=2.5cm}	% borders
-\pagestyle{empty}							% plain/empty (w/wo pagenumbers)
-\setlength{\parindent}{0pt}					% indent at new line
 
 % fonts
-\renewcommand{\rmdefault}{ptm}				% cmr, ptm, ppl, pnc, pbk
-\renewcommand{\sfdefault}{cmss}				% cmss, phv pag
-\renewcommand{\familydefault}{\rmdefault}	% set main font
+\RequirePackage{iftex}
+\if\ifXeTeX T\else\ifLuaTeX T\else F\fi\fi T%
+	\usepackage{fontspec}
+    \setromanfont{Libertinus Serif} %
+    \setsansfont{Libertinus Sans}   % 
+    \setmonofont{Inconsolata}       % Inconsolata	
+\else
+	\usepackage[utf8]{inputenc}      % input UTF-8
+	\renewcommand{\rmdefault}{ptm}   % cmr, ptm, ppl, pnc, pbk
+	\renewcommand{\sfdefault}{cmss}  % cmss, phv pag
+	\renewcommand{\familydefault}{\rmdefault} % set main font
+\fi
+
+% additional packages
+\RequirePackage[ngerman]{babel}      % use english or ngerman
+\RequirePackage[hidelinks]{hyperref} % use invisible clikable links
+\RequirePackage{microtype}           % better font kerning
+
+% layout
+\usepackage[%
+	hmargin=2.0cm, top=2cm, bottom=2.5cm
+]{geometry}
+\pagestyle{empty}            % plain/empty (w/wo pagenumbers)
+\setlength{\parindent}{0pt}  % indent at new line
+
+
 
 
 % document begin

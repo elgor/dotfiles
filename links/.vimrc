@@ -3,9 +3,10 @@
 
 " For multi-byte character support (CJK support, for example):
 "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
-       
+
+set fileencodings=utf-8
+
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
- 
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent.
  
 set expandtab       " Use the appropriate number of spaces to insert a <Tab>.
@@ -34,7 +35,6 @@ set incsearch       " While typing a search command, show immediately where the
                     " so far typed pattern matches.
  
 set ignorecase      " Ignore case in search patterns.
- 
 set smartcase       " Override the 'ignorecase' option if the search pattern
                     " contains upper case characters.
  
@@ -75,3 +75,4 @@ set mouse=a         " Enable the use of the mouse.
  
 filetype plugin indent on
 syntax on
+

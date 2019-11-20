@@ -5,9 +5,15 @@
 # General Setting
 # ============================================================
 
+# source environment
+source $HOME/.myenv
+
 
 # Lokale setzen
 export LANG=de_DE.UTF-8
+export LC_ALL=en_US.UTF-8
+#export LC_ALL=C  # set output language to english
+
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 #PATH=$HOME/Software/gnatarm/bin:$PATH
 PATH=$HOME/Software/gnatpro/bin:$PATH
@@ -16,6 +22,12 @@ PATH=$PATH:$HOME/scripts
 PATH=$PATH:/home/emu/Software/stlink
 PATH=$HOME/.rvm/rubies/ruby-2.3.3/bin:$PATH
 export PATH
+
+# Pythonpath
+PYTHONPATH=$HOME/WiPy:$PYTHONPATH
+export PYTHONPATH
+
+
 
 # if no interactive shell, exit
 [ -z "$PS1" ] && return

@@ -1,0 +1,64 @@
+
+
+# Pythonpath
+PYTHONPATH=$HOME/WiPy:$PYTHONPATH
+export PYTHONPATH
+
+
+# my dpi-scale
+export X_DPI_SCALE=1.4
+
+
+# set mail
+command -v evolution >/dev/null 2>&1 && { export XMAIL=evolution; }
+command -v thunderbird >/dev/null 2>&1 && { export XMAIL=thunderbird; }
+
+# set web browser
+command -v firefox >/dev/null 2>&1 && { export XWWW=firefox; }
+command -v chromium-browser >/dev/null 2>&1 && { export XWWW=chromium-browser; }
+
+# set file browser
+command -v nautilus >/dev/null 2>&1 && { export X_FILE_BROWSER="nautilus --no-desktop"; }
+command -v pcmanfm >/dev/null 2>&1 && { export X_FILE_BROWSER=pcmanfm; }
+
+# set task manager
+command -v lxtask >/dev/null 2>&1 && { export X_TASKMANAGER=lxtask; }
+command -v gnome-system-monitor >/dev/null 2>&1 && { export X_TASKMANAGER=gnome-system-monitor; }
+
+
+# set editor
+command -v gedit >/dev/null 2>&1 && { export XEDITOR=gedit; }
+command -v subl >/dev/null 2>&1 && { export XEDITOR=subl; }
+
+# set terminal
+command -v gnome-terminal >/dev/null 2>&1 && { export X_TERMINAL=gnome-terminal; }
+command -v lxterminal >/dev/null 2>&1 && { export X_TERMINAL=lxterminal; }
+
+
+# set calc
+command -v gnome-calculator >/dev/null 2>&1 && { export XCALC=gnome-calculator; }
+
+
+# set word
+command -v abiword >/dev/null 2>&1 && { export XWORD=gabiword; }
+command -v lowriter >/dev/null 2>&1 && { export XWORD=lowriter; }
+
+# set excel
+command -v gnumeric >/dev/null 2>&1 && { export XEXCEL=gnumeric; }
+command -v localc >/dev/null 2>&1 && { export XEXCEL=localc; }
+
+# set powerpoint
+command -v loimpress >/dev/null 2>&1 && { export XIMPRESS=loimpress; }
+
+
+# set ftp
+command -v filezilla >/dev/null 2>&1 && { export XFTP=filezilla; }
+
+
+
+# desktop notification
+command -v dunst >/dev/null 2>&1 && { export XNOTIFY=dunst; }
+
+
+# Exec=sh -c "source /home/\${USER}/.myenv; chromium-browser --force-device-scale-factor\=\${X_DPI_SCALE} %U"
+

@@ -1,17 +1,15 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
- * Institution: Technische Universität München
- * Department: Realtime Computer Systems (RCS)
- * Project: KEES
- * Program: APM Interface
- * Module: Logging
- * Authors: Emanuel Regnath (emanuel.regnath@tum.de)
- *
- * Description: Logs MavLink raw packages on SD-card
+ * Institution: Technical University of Munich, Germany
+ * Department:  Electrical and Computer Engineering 
+ * Group:       Embedded Systems and Internet of Things
  * 
- * ToDo:
- * [ ] Implementation
+ * Project:     Hash-based Signature
+ * Authors:     Emanuel Regnath (emanuel.regnath@tum.de)
+ *
+ * Description: Models a Merkle Tree
  * 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 
 // system includes (<> search only in include paths)
 #include <stdint.h>

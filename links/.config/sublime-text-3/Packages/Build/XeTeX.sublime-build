@@ -1,0 +1,7 @@
+{
+	"cmd": ["if test -f 'Makefile'; then make; else xelatex $file_name && evince $file_base_name.pdf; fi"],
+	"file_regex": "^(?:[^:]+:)?(.*tex|.*sty|.*cls):([0-9]*):", 
+	"selector": "text.tex.latex",
+	"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+	"shell": true
+}

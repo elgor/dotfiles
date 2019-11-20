@@ -30,6 +30,7 @@
 { "keys": ["ctrl+shift+j"], "command": "scroll_lines", "args": {"amount": -4.0 } },
 
 
+{ "keys": ["ctrl+shift+d"], "command": "find_under_expand_skip" },
 
 
 

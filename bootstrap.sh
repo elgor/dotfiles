@@ -36,7 +36,8 @@ read -p "Would you like to sync git? (y|n)" -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	git add *
+	git add links/*
+	git add hardlinks/*
 	git commit -a
 	git push origin master
 fi

@@ -2,13 +2,13 @@
 # target binary
 BIN := main
 
-# select compiler
+# compiler and flags
 CXX := gcc
-CXXFLAGS = -Wall
+CXXFLAGS = -Wall -lm
 
-# sources
-SRC_EXT := .c
+# source paths (space separated)
 SRC_DIRS = .
+SRC_EXT := .c
 
 # include paths (space separated)
 INC_DIRS = . /usr/include
@@ -34,28 +34,36 @@ INCS += $(foreach idir,$(INC_DIRS),-I$(idir))
 LIBS += $(foreach ldir,$(LIB_DIRS),-L$(ldir))
 
 # determine objects to build based on sources
-OBJS := $(patsubst $(SRC_DIRS)/%$(SRC_EXT), $(OBJ_DIR)/%.o, $(SRCS))
-
+# OBJS := $(patsubst $(SRC_DIRS)/%$(SRC_EXT), $(OBJ_DIR)/%, $(SRCS:$(SRC_EXT)=$(OBJ_EXT)))
+OBJS := $(addprefix $(OBJ_DIR)/,$(SRCS:$(SRC_EXT)=$(OBJ_EXT)))
 
 
 # will be called even if newest files exists
 .PHONY: clean
 
+
+$(info Compiler flags: $(CXXFLAGS))
+$(info Includes: $(INCS))
+$(info Libraries: $(LIBS))
+$(info Objects: $(OBJS))
+
+
 # compile sources to objects
 all: main
-	@echo "Searchpaths:"
-	@echo "Includes: $(INCS)"
-	@echo "Libraries: $(LIBS)"
 	@echo "$(CXX) -o $(BIN) $(CXXFLAGS) $(INCS) $(LIBS)"
-
 
 # link objects
 main: $(OBJS)
 	$(CXX) $^ -o $(BIN) $(CXXFLAGS) $(INCS) $(LIBS)
 
+# create directory if does not exist
+dir_guard=@mkdir -p $(@D)
+
 # compile sources to objects	
-$(OBJ_DIR)/%$(OBJ_EXT):$(SRC_DIRS)/%$(SRC_EXT)
-	$(CXX) -c $< $(CXXFLAGS) 
-    
+$(OBJ_DIR)/%$(OBJ_EXT): %$(SRC_EXT)
+	$(dir_guard)
+	$(CXX) -c $< $(CXXFLAGS) -o $@
+
 clean:
 	rm $(BIN) $(OBJS) 
+

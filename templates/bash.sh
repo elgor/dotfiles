@@ -19,6 +19,18 @@ X=3
 CALC_VAL=$((5 * $X / 2))	# = 7
 ARRAY=("one" $X 1 2)		# strings, variables, integer
 
+T_START=$(date +%s.%3N)    # time in sec with ms resolution
+
+
+# arrays
+echo ${ARRAY[@]}  # individual words for each element
+echo ${ARRAY[*]}  # one word containing all elements
+len=${#ARRAY[@]}
+for i in "${!ARRAY[@]}"; do
+	another_array+=(${ARRAY[$i]})   # add to array
+done
+
+
 
 # functions
 function usage () {
@@ -45,19 +57,22 @@ do
 done < $path 
 
 	
-	read -p "Do you want to continue? (y|n)" -n 1 -r
-	echo    # (optional) move to a new line
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-	    # do dangerous stuff
-	fi
-	
-	# tests
-	# Strings: ==, !=, \<, \>
-	# Integer: -eq, -ne, -lt, -gt, -le, -ge
-	# Files: -f, -d, -r, -w, -x 
-	if [ "$X" -ge "$CALC_VAL" ]; then 
-		echo "Hello World"
-	fi	
+read -p "Do you want to continue? (y|n)" -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    # do dangerous stuff
+fi
+
+# tests
+# Strings: ==, !=, \<, \>
+# Integer: -eq, -ne, -lt, -gt, -le, -ge
+# Files: -f, -d, -r, -w, -x 
+if [ "$X" -ge "$CALC_VAL" ]; then 
+	echo "Hello World"
+fi	
+
+
+
 
 # exit with error code
 exit 0

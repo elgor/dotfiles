@@ -1,14 +1,26 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# Dependencies: sudo apt install feh, dex, i3lock
 
 # main modifier
 set $mod Mod4
+# control, Mod1=ALT, Mod4=Win, shift,
+# set $alt Mod1
 
 
 # Font for window titles and bar (unless font specification in the bar {} block below)
-font pango:monospace 10   
+font pango:monospace 12   
 #font pango:DejaVu Sans Mono 8
+
+
+# set your defaul programs
+set $filemanager "$X_FILE_BROWSER"
+set $webbrowser chromium-browser
+set $editor subl
+set $taskman "$X_TASKMANAGER"
+
 
 
 #######################################################
@@ -29,11 +41,15 @@ client.background       $normal  $background  $focused     $background
 
 
 
+#######################################################
+# i3bar
+#######################################################
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
     status_command i3status -c ~/.i3/i3status.conf
     position top
+    tray_output primary
     mode hide
     colors {
         background  $background
@@ -62,6 +78,7 @@ floating_modifier $mod
 
 # find open windows
 bindsym $mod+p exec rofi -show window
+bindsym Mod1+Tab exec rofi -show window
 
 # change focus
 bindsym $mod+h focus left
@@ -88,6 +105,7 @@ bindsym $mod+Shift+a focus parent
 
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -121,11 +139,11 @@ bindsym $mod+2 workspace number 2 file
 bindsym $mod+3 workspace number 3 www
 bindsym $mod+4 workspace number 4 mail
 bindsym $mod+5 workspace number 5 code
-bindsym $mod+6 workspace number 6 music
+bindsym $mod+6 workspace number 6 misc
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+9 workspace number 9 stats
+bindsym $mod+0 workspace number 0 media
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -133,11 +151,11 @@ bindsym $mod+Shift+2 move container to workspace 2 file
 bindsym $mod+Shift+3 move container to workspace 3 www
 bindsym $mod+Shift+4 move container to workspace 4 mail
 bindsym $mod+Shift+5 move container to workspace 5 code
-bindsym $mod+Shift+6 move container to workspace 6 music
+bindsym $mod+Shift+6 move container to workspace 6 misc
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+0 move container to workspace 0 media
 
 # move container to monitor
 bindsym $mod+Shift+j move workspace to output left
@@ -148,9 +166,10 @@ bindsym $mod+Shift+k move workspace to output right
 assign [class="pcmanfm"] 2 file
 assign [class="(?i)chromium-browser"] 3 www
 assign [class="(?i)firefox"] 3 www
+assign [class="(?i)opera"] 3 www
 assign [class="(?i)thunderbird"] 4 mail
 assign [class="(?i)telegram"] 4 mail
-for_window [class="(?i)Spotify"] move to workspace 6 music
+for_window [class="(?i)Spotify"] move to workspace 0 media
 
 new_window normal 5
 hide_edge_borders none
@@ -164,14 +183,19 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
+
 # lock/exit/suspend etc.
+bindsym $mod+F10 exec --no-startup-id "i3lock -t -i ~/.i3/wp.png"
+#######################################################
+# Modes
+#######################################################
 bindsym XF86PowerOff mode "$mode_system"
 bindsym $mod+Escape mode "$mode_system"
 set $mode_system Want to leave?  (e) logout, (l) lock, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
 mode "$mode_system" {
     bindsym e exit
     bindsym l exec --no-startup-id "i3lock -t -i ~/.i3/wp.png"; mode "default"
-    bindsym s exec --no-startup-id "i3lock -t -i ~/.i3/wp.png; systemctl suspend"; mode "default"
+    bindsym s exec --no-startup-id "systemctl suspend"; mode "default"
     bindsym h exec --no-startup-id "i3lock -t -i ~/.i3/wp.png; systemctl hibernate"; mode "default"
     bindsym r exec --no-startup-id "reboot"
     bindsym p exec --no-startup-id "poweroff";       
@@ -182,8 +206,8 @@ mode "$mode_system" {
 }
 
 
-
 # resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -203,35 +227,62 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+
+
 
 #######################################################
-# program shortcuts
+# XF86 keyboard symbols
 #######################################################
-
-# program launcher
-# bindsym $mod+d exec dmenu_run -l 10
-bindsym $mod+o exec rofi -show run -lines 3 -eh 2 -width 100 -padding 100 -opacity "85" -bw 0 -bc "$background" -bg "$background" -fg "$text" -hlbg "$background" -hlfg "#9575cd"
-
-bindsym $mod+d exec pcmanfm
-# bindsym $mod+c exec pcmanfm
-
-# start a terminal
-bindsym $mod+Return exec kupfer
-bindsym $mod+Shift+Return exec i3-sensible-terminal
-
+bindsym XF86Calculator exec $filemanager
+bindsym XF86Calendar exec thunderbird
+bindsym XF86HomePage exec $webbrowser
+bindsym XF86Mail exec $email
+bindsym XF86Search exec kupfer
+bindsym XF86Tools exec spotify
+bindsym XF86WWW exec $webbrowser
 
 # Xorg Multimedia keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && killall -SIGUSR1 i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && killall -SIGUSR1 i3status
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioMicMute exec --no-startup-id "pactl set-source-mute 1 toggle"
 
 bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 
 
-# spotify 
+# Menu
+# bindsym Menu 
+
+# dual 4K
+bindsym $mod+F9 exec sh -c "~/.i3/scripts/dual4K.sh"
+
+
+
+#######################################################
+# program shortcuts
+#######################################################
+# program launcher
+# bindsym $mod+d exec dmenu_run -l 10
+bindsym $mod+o exec rofi -show run -lines 3 -eh 2 -width 100 -padding 100 -opacity "85" -bw 0 -bc "$background" -bg "$background" -fg "$text" -hlbg "$background" -hlfg "#9575cd"
+
+bindsym $mod+d exec $filemanager
+# bindsym $mod+c exec pcmanfm
+
+# start a terminal
+bindsym $mod+Return exec kupfer
+bindsym $mod+x exec kupfer
+bindsym $mod+Shift+Return exec i3-sensible-terminal
+
+# taskmanager
+bindsym Control+Mod1+Delete exec $X_TASKMANAGER
+
+# find cursor
+bindsym $mod+y exec ~/.i3/scripts/find-cursor
+
+
+# spotify hack: mod+ctrl+arrow
 bindsym $mod+Control+Right exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 bindsym $mod+Control+Left exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym $mod+Control+Down exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
@@ -239,17 +290,19 @@ bindsym $mod+Control+Down exec "dbus-send --print-reply --dest=org.mpris.MediaPl
 
 # function keys
 exec chmod 666 /sys/class/backlight/intel_backlight/brightness
-bindsym $mod+F6 exec "/home/emu/Dropbox/Privat/Linux/Shell-Scripte/Screenlayouts/dimm.sh"
+bindsym $mod+F6 exec "~/Dropbox/Privat/Linux/Shell-Scripte/Screenlayouts/dimm.sh"
 
 bindsym $mod+Shift+F11 exec setxkbmap us
-bindsym $mod+Shift+F12 exec xkbcomp -I/home/emu/.config/xkb/ /home/emu/.config/xkb/mymap $DISPLAY
+bindsym $mod+Shift+F12 exec sh -c "xkbcomp -I/home/${USER}/.config/xkb/ /home/${USER}/.config/xkb/mymap $DISPLAY"
 
 
 
 # wallpaper: LFDq8DK, XLrjqFi
-exec feh --bg-scale ~/Bilder/Wallpaper/UltraWide/LFDq8DK.jpg   
+exec feh --bg-scale ~/.i3/wp.png  
 
 
 # autostart desktop files in .config/autostart
 exec dex -a -e i3
+
+# exec xrandr --dpi 120
 
